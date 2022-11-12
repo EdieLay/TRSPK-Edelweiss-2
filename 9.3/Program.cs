@@ -120,7 +120,10 @@ class Atelier
         Console.WriteLine("===== Women's Clothes =====");
         for (int i = 0; i < n; i++)
         {
-            Console.WriteLine($"   №{i + 1}   \nType of clothes: {m[i].TypeOfClothes}\nClothing size: {m[i].ClS}\nType of size: {m[i].ClS.GetTypeOfSize}\nCost: {m[i].Cost}\nColour: {m[i].Colour}");
+            if (m[i].TypeOfClothes != "tie")
+            {
+                Console.WriteLine($"   №{i + 1}   \nType of clothes: {m[i].TypeOfClothes}\nClothing size: {m[i].ClS}\nType of size: {m[i].ClS.GetTypeOfSize}\nCost: {m[i].Cost}\nColour: {m[i].Colour}");
+            }
         }
     }
     public void dressMan(Clothes[] m, int n)
@@ -128,7 +131,10 @@ class Atelier
         Console.WriteLine("===== Men's Clothes =====");
         for (int i = 0; i < n; i++)
         {
-            Console.WriteLine($"   №{i + 1}   \nType of clothes: {m[i].TypeOfClothes}\nClothing size: {m[i].ClS}\nType of size: {m[i].ClS.GetTypeOfSize}\nCost: {m[i].Cost}\nColour: {m[i].Colour}");
+            if (m[i].TypeOfClothes != "skirt")
+            {
+                Console.WriteLine($"   №{i + 1}   \nType of clothes: {m[i].TypeOfClothes}\nClothing size: {m[i].ClS}\nType of size: {m[i].ClS.GetTypeOfSize}\nCost: {m[i].Cost}\nColour: {m[i].Colour}");
+            }
         }
     }
 }
