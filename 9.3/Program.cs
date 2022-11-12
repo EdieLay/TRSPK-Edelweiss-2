@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-Clothes[] mas = new Clothes[4];
+﻿Clothes[] mas = new Clothes[4];
 mas[0] = new Tshirt(ClothingSize.XXS, 2000, "red");
 mas[1] = new Pants(ClothingSize.L, 6999, "blue");
 mas[2] = new Skirt(ClothingSize.S, 4300, "white");
@@ -8,6 +6,7 @@ mas[3] = new Tie(ClothingSize.M, 2599, "black");
 
 Atelier atelier = new Atelier();
 atelier.dressWoman(mas, 4);
+atelier.dressMan(mas, 4);
 
 public enum ClothingSize
 {
@@ -122,9 +121,10 @@ class Atelier
         {
             if (m[i].TypeOfClothes != "tie")
             {
-                Console.WriteLine($"   №{i + 1}   \nType of clothes: {m[i].TypeOfClothes}\nClothing size: {m[i].ClS}\nType of size: {m[i].ClS.GetTypeOfSize}\nCost: {m[i].Cost}\nColour: {m[i].Colour}");
+                Console.WriteLine($"   №{i + 1}   \nType of clothes: {m[i].TypeOfClothes}\nClothing size: {m[i].ClS}\nType of size: {m[i].ClS.GetTypeOfSize()}\nCost: {m[i].Cost}\nColour: {m[i].Colour}");
             }
         }
+        Console.WriteLine();
     }
     public void dressMan(Clothes[] m, int n)
     {
@@ -133,8 +133,9 @@ class Atelier
         {
             if (m[i].TypeOfClothes != "skirt")
             {
-                Console.WriteLine($"   №{i + 1}   \nType of clothes: {m[i].TypeOfClothes}\nClothing size: {m[i].ClS}\nType of size: {m[i].ClS.GetTypeOfSize}\nCost: {m[i].Cost}\nColour: {m[i].Colour}");
+                Console.WriteLine($"   №{i + 1}   \nType of clothes: {m[i].TypeOfClothes}\nClothing size: {m[i].ClS}\nType of size: {m[i].ClS.GetTypeOfSize()}\nCost: {m[i].Cost}\nColour: {m[i].Colour}");
             }
         }
+        Console.WriteLine();
     }
 }
