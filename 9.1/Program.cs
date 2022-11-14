@@ -1,30 +1,47 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Collections;
 
-A ClassA = new A(5, 5);
-A ClassA2 = new A(2, 2);
-A ClassA3 = new A(7, 8);
-CustomArray<A> cArray = new CustomArray<A>(2);
-cArray[0] = ClassA;
-cArray[1] = ClassA2;
+A a1 = new A(5, 5);
+A a2 = new A(2, 2);
+A a3 = new A(7, 8);
+CustomArray<A> aArray = new CustomArray<A>(3);
+aArray[0] = a1;
+aArray[1] = a2;
+aArray[2] = a3;
 
 // Вывод op2 у всех элементов
-foreach (A item in cArray)
-{
-    Console.WriteLine(item.op2);
-}
+Console.WriteLine(aArray);
+aArray.Sort();
+Console.WriteLine(aArray);
 
 // Смена значений поля op2 у всех элементов
-foreach (A item in cArray)
+foreach (A item in aArray)
 {
-    item.op2 = ClassA3.op2;
+    item.op2--;
 }
 
-// Вывод op2 у всех элементов
-foreach (A item in cArray)
+Console.WriteLine(aArray);
+
+B b1 = new B("wow", 145.35);
+B b2 = new B("alright, no fighting", 2);
+B b3 = new B("weewoo weewoo YesYes YesYes", -0.153);
+CustomArray<B> bArray = new CustomArray<B>(3);
+bArray[0] = b1;
+bArray[1] = b2;
+bArray[2] = b3;
+
+Console.WriteLine(bArray);
+bArray.Sort();
+Console.WriteLine(bArray);
+
+// Смена значений поля op2 у всех элементов
+foreach (B item in bArray)
 {
-    Console.WriteLine(item.op2);
+    item.op1 = "got it";
 }
+
+bArray.Sort();
+Console.WriteLine(bArray);
 
 
 
@@ -40,17 +57,17 @@ public class CustomArray<T> : IEnumerable where T: ICustomComparable<T>
     {
         valueArr = new T[count];
     }
-    public void Sort(CustomArray<T> arr)
+    public void Sort()
     {
-        for (int i = 0; i < arr.valueArr.Length; i++)
+        for (int i = 0; i < valueArr.Length; i++)
         {
-            for (int j = 0; j < arr.valueArr.Length - i - 1; j++)
+            for (int j = 0; j < valueArr.Length - i - 1; j++)
             {
-                if (arr[j].CustomCompare(arr[j + 1]) > 0)
+                if (valueArr[j].CustomCompare(valueArr[j + 1]) > 0)
                 {
-                    T temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+                    T temp = valueArr[j];
+                    valueArr[j] = valueArr[j + 1];
+                    valueArr[j + 1] = temp;
                 }
             }
         }
@@ -66,7 +83,19 @@ public class CustomArray<T> : IEnumerable where T: ICustomComparable<T>
         get => valueArr[index];
         set => valueArr[index] = value;
     }
+
+    public override string ToString()
+    {
+        string result = string.Empty;
+        for (int i = 0; i < valueArr.Length; i++)
+        {
+            result += $"{i+1}) " + valueArr[i].ToString() + Environment.NewLine;
+        }
+        return result;
+    }
 }
+
+
 
 public class A: ICustomComparable<A>
 {
@@ -97,7 +126,14 @@ public class A: ICustomComparable<A>
             return -1;
         return 0;
     }
+
+    public override string ToString()
+    {
+        return $"{op1} {op2}";
+    }
 }
+
+
 
 public class B : ICustomComparable<B>
 {
@@ -127,6 +163,10 @@ public class B : ICustomComparable<B>
         if (this.op1.Length + this.op2 < val.op1.Length + val.op2)
             return -1;
         return 0;
+    }
+    public override string ToString()
+    {
+        return $"{op1} {op2}";
     }
 }
 
