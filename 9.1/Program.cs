@@ -69,9 +69,9 @@ public class CustomArray<T> : IEnumerable where T: ICustomComparable<T>
                     valueArr[j] = valueArr[j + 1];
                     valueArr[j + 1] = temp;
                 }
+                }
             }
         }
-    }
 
     public IEnumerator GetEnumerator()
     {
@@ -90,7 +90,7 @@ public class CustomArray<T> : IEnumerable where T: ICustomComparable<T>
         for (int i = 0; i < valueArr.Length; i++)
         {
             result += $"{i+1}) " + valueArr[i].ToString() + Environment.NewLine;
-        }
+}
         return result;
     }
 }
@@ -107,7 +107,7 @@ public class A: ICustomComparable<A>
         set => _op1 = value;
     }
     public int op2
-    {
+{
         get => _op2;
         set => _op2 = value;
     }
